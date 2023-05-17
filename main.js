@@ -3,16 +3,29 @@ var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
     return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-exports.__esModule = true;
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var message = "hi welcome to great kirikalam magic show....";
 console.log(message);
 //type declaration (let,var,const)
@@ -34,7 +47,7 @@ multitype = "Aravi";
 var obj = {
     name: "Nethaji",
     age: 23,
-    work: "full stack developer"
+    work: "full stack developer",
 };
 // obj.gender="male"
 function sum(a, b) {
@@ -64,7 +77,7 @@ function summa(point) {
 //object
 var p = {
     x: 12,
-    y: 23
+    y: 23,
 };
 console.log(summa(p));
 function add2(point) {
@@ -110,7 +123,7 @@ var car = /** @class */ (function () {
                 throw "supply an engine!";
             this._engine = value;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     return car;
@@ -161,3 +174,32 @@ var cars = /** @class */ (function () {
 }());
 var e1 = new cars('v8');
 e1.start("started");
+//enum
+var department;
+(function (department) {
+    department[department["mech"] = 0] = "mech";
+    department[department["cse"] = 1] = "cse";
+    department[department["eee"] = 2] = "eee";
+    department[department["it"] = 3] = "it";
+    department[department["ece"] = 4] = "ece";
+})(department || (department = {}));
+console.log("enum of dept : " + department.cse);
+//diff ways to add a data in an object
+//spread operator (...)
+var myfunc = function (obj) {
+    return __assign(__assign({}, obj), { greet: 'hi' });
+};
+var myfunc1 = function (obj) {
+    obj.greet = 'hello';
+    return obj;
+};
+var myfunc2 = function (obj) {
+    obj['greet'] = 'bye';
+    return obj;
+};
+a = {
+    name: "nethaji",
+    age: 23
+};
+b = myfunc2(a);
+console.log(b.name);

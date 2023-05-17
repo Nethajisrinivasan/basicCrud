@@ -168,3 +168,30 @@ stop (message:string){
 }
 var e1 = new cars('v8');
 e1.start("started");
+
+//enum
+enum department{
+  mech,cse,eee,it,ece
+}
+console.log("enum of dept : "+department.cse)
+
+//diff ways to add a data in an object
+//spread operator (...)
+
+let myfunc =(obj:object)=>{
+  return{...obj,greet:'hi'}
+}
+let myfunc1 =(obj:object)=>{
+   obj.greet='hello'
+   return obj
+}
+let myfunc2 =<T>(obj:T)=>{ //<T> genrics
+  obj['greet']='bye'
+  return obj
+}
+a={
+  name:"nethaji",
+  age:23
+}
+b=myfunc2(a)
+console.log(b.name)
